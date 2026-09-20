@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+  --ink:        #101014;
+  --paper:      #FFFFFF;
+  --paper-2:    #F3F4FA;
+  --blue-1:     #6C2ECF;
+  --blue-2:     #2F6BFF;
+  --line:       #E3E4EF;
+  --white:      #FFFFFF;
+  --gradient: linear-gradient(135deg, var(--blue-1), var(--blue-2));
+  --font-head: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --ease: cubic-bezier(.22,.9,.32,1);
+}
+
+*{ box-sizing: border-box; }
+
+@keyframes fadeUp{
+  from{ opacity: 0; transform: translateY(16px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; }
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  background: var(--paper-2);
+  font-family: var(--font-body);
+  color: var(--ink);
+}
+
+.content{
+  padding: 48px 16px 20px;
+  text-align: center;
+}
+
+.content > center > p{
+  font-family: var(--font-head);
+  font-size: 17px;
+  color: var(--ink);
+  max-width: 60ch;
+  margin: 0 auto 24px;
+}
+
+/* ---------- Card ---------- */
+.carte{
+  width: 400px;
+  max-width: 92vw;
+  min-height: 254px;
+  height: auto;
+  padding: 14px 18px 20px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  margin: 24px auto;
+  box-shadow: 0 14px 34px rgba(23, 18, 58, 0.14);
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp 0.5s var(--ease) both;
+}
+
+.carte::before{
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: var(--gradient);
+}
+
+.acc, .acc1{ width: 100%; }
+
+.acc table{ width: 100% !important; }
+
+.armoire, table .armoire{
+  width: 42px !important;
+  height: 42px !important;
+}
+
+.carte h3{
+  font-family: var(--font-head);
+  font-size: 13px !important;
+  color: var(--ink);
+  text-align: center;
+  margin: 6px 0 10px;
+}
+
+.sous-carte{
+  display: inline-block;
+  vertical-align: top;
+  padding: 4px;
+  margin-top: 4px !important;
+}
+
+.sous-carte img{
+  width: 76px !important;
+  height: 96px !important;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+
+#sous-cart{
+  padding-left: 12px;
+}
+
+#sous-cart li{
+  font-size: 12.5px !important;
+  line-height: 22px !important;
+}
+
+.sous-carte .upp{ text-transform: uppercase; }
+.sous-carte .cap{ text-transform: capitalize; }
+
+li{
+  list-style-type: none;
+  font-size: 13px;
+  line-height: 22px;
+}
+
+u{
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 2px solid var(--blue-2);
+}
+
+.drap{
+  width: 34px !important;
+  height: auto !important;
+  vertical-align: middle;
+}
+
+.descr{
+  display: none;
+}
+
+/* ---------- Signature card ---------- */
+.h1{
+  color: var(--ink);
+  text-transform: uppercase;
+  font-family: var(--font-head);
+  font-size: 24px;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sous-carte1{
+  display: inline-block;
+  vertical-align: top;
+  padding: 4px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.qr{
+  width: 90px !important;
+  height: 90px !important;
+}
+
+/* ---------- Download button ---------- */
+.button{
+  border: none;
+  background: var(--gradient);
+  background-size: 160% 160%;
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 700;
+  padding: 12px 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), background-position 0.4s ease;
+}
+
+.button:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(23, 18, 58, 0.18);
+  background-position: 100% 0;
+}
+
+/* ---------- Print ---------- */
+@media print{
+  button, header, footer{ display: none; }
+
+  @page{
+    size: 85.6mm 54mm;
+    margin: 0;
+  }
+
+  body{ background: #fff; }
+
+  .content{ padding: 0; }
+
+  .carte{
+    box-shadow: none;
+    margin: 0;
+    page-break-after: always;
+    animation: none;
+  }
+}
+
+@media (max-width: 480px){
+  .sous-carte1{ display: block; margin: 12px auto; }
+}

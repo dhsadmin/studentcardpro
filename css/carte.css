@@ -1,0 +1,106 @@
+/* =========================================================
+   StudentCardPro — carte scolaire (aperçu + page « Ma carte »)
+   Polices Poppins embarquées : le rendu de la carte ne dépend
+   ni d'internet ni des polices installées sur le poste.
+   ========================================================= */
+
+@font-face{
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('../fonts/Poppins-Regular.ttf') format('truetype');
+}
+@font-face{
+  font-family: 'Poppins';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url('../fonts/Poppins-Medium.ttf') format('truetype');
+}
+@font-face{
+  font-family: 'Poppins';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('../fonts/Poppins-Bold.ttf') format('truetype');
+}
+
+/* ---------- Aperçu d'une face ---------- */
+.carte-slot{
+  width: 100%;
+  max-width: 640px;
+  aspect-ratio: 856 / 540;
+  background: var(--white);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px var(--line), var(--shadow);
+}
+
+.carte-canvas{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- Page « Ma carte » ---------- */
+.carte-page{ padding: 56px 0 72px; }
+
+.carte-page .intro{
+  max-width: 62ch;
+  margin: 0 auto 36px;
+  text-align: center;
+  font-size: 17px;
+  color: var(--ink);
+}
+
+.carte-faces{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.carte-face{ display: flex; flex-direction: column; align-items: center; gap: 12px; }
+
+.carte-face figcaption{
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.carte-actions{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.carte-actions .btn:disabled{
+  opacity: 0.6;
+  cursor: progress;
+  transform: none;
+  box-shadow: none;
+}
+
+.carte-status{
+  min-height: 1.6em;
+  margin: 16px 0 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.carte-status.error{ color: #B42318; }
+
+.carte-empty{ text-align: center; padding: 24px 0; }
+
+@media (max-width: 860px){
+  .carte-faces{ grid-template-columns: 1fr; }
+  .carte-page{ padding: 40px 0 56px; }
+}
+
+button.btn{ font-size: 15px; line-height: 1.2; }
+.carte-actions .btn-outline{ font-size: 15px; line-height: 1.2; }
